@@ -23,8 +23,15 @@ func main(){
 			ret := prodcutService.NewProducts(10)
 			context.JSON(200, ret)
 		})
-	}
 
+		v1Group.Handle("POST", "/getProduct", func(context *gin.Context) {
+			//context.String(200, "hello moto")
+			ret := prodcutService.NewProducts(2)
+			context.JSON(200, gin.H{
+				"data":ret,
+			})
+		})
+	}
 
 	//向consuReg所代表的cousul里，注册名字为"prodServcie"的服务，此服务的地址是"127.0.0.1:8081"
 	//notice: 一旦此程序退出,就会执行反注册，也就是将 product2Servcie服务配置 从consul中删除
