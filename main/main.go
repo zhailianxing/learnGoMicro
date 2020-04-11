@@ -25,10 +25,16 @@ func main(){
 	server := web.NewService(
 		web.Registry(consuReg),
 		web.Name("indexServcie"),
-		web.Address(":8081"), // 即：127.0.0.1:8081的简写
+		//web.Address(":8081"), // 即：127.0.0.1:8081的简写
 		web.Handler(ginRouter),
 		)
 
+	server.Init() // 内部基础cmd命令解析命令行参数。 参数是：server_name，server_address
 	server.Run()
 
 }
+//命令行执行：
+// 注册第一个服务：go run main.go --server_address :8081
+// 注册第二个服务：go run main.go --server_address :8082
+
+//最后：所有的服务信息应该放在配置文件中或者配置服务中(consul/etcd等)，而不是从命令行直接写，这样不易维护。
