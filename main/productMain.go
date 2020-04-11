@@ -31,10 +31,11 @@ func main(){
 	server := web.NewService(
 		web.Registry(consuReg),
 		web.Name("product2Servcie"),
-		web.Address(":8082"), // 即：127.0.0.1:8081的简写
+		//web.Address(":8082"), // 即：127.0.0.1:8081的简写
 		web.Handler(ginRouter),
 		)
 
+	server.Init()
 	server.Run()
 
 }

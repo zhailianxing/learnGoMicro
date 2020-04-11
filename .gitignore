@@ -1,4 +1,5 @@
 vendor
 vendor/*
+.idea/workspace.xml
 .idea
 .idea/*
