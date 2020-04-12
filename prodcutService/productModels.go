@@ -12,8 +12,8 @@ func NewProducts(n int) []*ProductInfo {
 	ret := make([]*ProductInfo, 0)
 	for i := 0; i < n; i++ {
 		ret = append(ret, &ProductInfo{
-			ProductId: 100+n,
-			ProductName: "product_name_"+strconv.Itoa(n),
+			ProductId: 100+i,
+			ProductName: "product_name_"+strconv.Itoa(i),
 		})
 	}
 	return ret

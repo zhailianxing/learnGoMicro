@@ -44,7 +44,7 @@ func CallApi2( s selector.Selector) {
 	// 第一个参数： 请求的服务名字
 	// 第二个参数endPoint: http协议用的是 path； grpc用的是 函数名；
 	// 第三个参数： 请求参数
-	req := plguinsHttpClient.NewRequest("product2Servcie", "/v1/getProduct", nil)
+	req := plguinsHttpClient.NewRequest("product2Servcie", "/v1/getProduct", map[string]int{"size":-1})
 	var resp map[string]interface{} // 根据接口返回的结果 定义类型
 	err := plguinsHttpClient.Call(context.Background(), req, &resp) //resp要传指针进去
 	if err != nil {

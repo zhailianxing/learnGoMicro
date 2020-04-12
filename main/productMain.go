@@ -25,8 +25,17 @@ func main(){
 		})
 
 		v1Group.Handle("POST", "/getProduct", func(context *gin.Context) {
-			//context.String(200, "hello moto")
-			ret := prodcutService.NewProducts(2)
+			//使用gin的方法
+			type Req struct {
+				Size int `form:"size"` // 客户端使用form表单传递。size字段
+			}
+			req := Req{}
+			err := context.Bind(&req) //使用gin的Bind函数
+			if err != nil || req.Size <= 0 {
+				req.Size = 3
+			}
+			ret := prodcutService.NewProducts(req.Size)
+
 			context.JSON(200, gin.H{
 				"data":ret,
 			})
